@@ -36,8 +36,8 @@
       <file leaf-file-name="SmallListComprehension.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/cannata/SmallListComprehension.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.61452514">
-              <caret line="67" column="78" selection-start-line="67" selection-start-column="78" selection-end-line="67" selection-end-column="78" />
+            <state vertical-scroll-proportion="0.74860334">
+              <caret line="75" column="58" selection-start-line="75" selection-start-column="58" selection-end-line="75" selection-end-column="58" />
               <folding />
             </state>
           </provider>
@@ -792,12 +792,12 @@
       <created>1460581577124</created>
       <option name="number" value="Default" />
       <updated>1460581577124</updated>
-      <workItem from="1460581579765" duration="998000" />
+      <workItem from="1460581579765" duration="1196000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="998000" />
+    <option name="totallyTimeSpent" value="1196000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -870,8 +870,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/cannata/SmallListComprehension.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.61452514">
-          <caret line="67" column="78" selection-start-line="67" selection-start-column="78" selection-end-line="67" selection-end-column="78" />
+        <state vertical-scroll-proportion="0.74860334">
+          <caret line="75" column="58" selection-start-line="75" selection-start-column="58" selection-end-line="75" selection-end-column="58" />
           <folding />
         </state>
       </provider>

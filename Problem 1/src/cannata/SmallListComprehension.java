@@ -49,7 +49,7 @@ public class SmallListComprehension {
 
 
         // 3. select last_name, first_name, salary from emp where salary > 2000 and dept_id > 30;
-        System.out.println("\nselect * from emp where salary > 2000 and dept_id > 30;");
+        System.out.println("\nselect last_name, first_name, salary from emp where salary > 2000 and dept_id > 30;");
         emp.stream()
                 .filter(e -> (Integer)e.get(7) > 2000 && (Integer)e.get(9) > 30)
                 .map(e -> Arrays.asList(e.get(1), e.get(2), e.get(7)))
@@ -57,7 +57,7 @@ public class SmallListComprehension {
 
 
         // 4. select last_name, first_name, salary from emp where salary > 2000 order by salary;
-        System.out.println("\nselect * from emp where salary > 2000 order by salary;");
+        System.out.println("\nselect last_name, first_name, salary from emp where salary > 2000 order by salary;");
         emp.stream()
                 .filter(e -> (Integer)e.get(7) > 2000)
                 .sorted((x, y) -> x.get(7).toString().compareTo(y.get(7).toString()))
@@ -65,7 +65,7 @@ public class SmallListComprehension {
                 .forEach(e -> {System.out.println(e);});
 
         // 5. select last_name, first_name, salary from emp where salary > 2000 order by salary desc;
-        System.out.println("\nselect * from emp where salary > 2000 order by salary;");
+        System.out.println("\nselect last_name, first_name, salary from emp where salary > 2000 order by salary;");
         emp.stream()
                 .filter(e -> (Integer)e.get(7) > 2000)
                 .sorted((x, y) -> y.get(7).toString().compareTo(x.get(7).toString()))
