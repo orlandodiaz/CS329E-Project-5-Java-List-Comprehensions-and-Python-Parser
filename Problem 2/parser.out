@@ -1,0 +1,133 @@
+Created by PLY version 3.8 (http://www.dabeaz.com/ply)
+
+Grammar
+
+Rule 0     S' -> start
+Rule 1     start -> FIRSTLINE
+Rule 2     start -> data
+Rule 3     data -> NAME , float , float , INTEGER
+Rule 4     float -> INTEGER . INTEGER
+
+Terminals, with rules where they appear
+
+,                    : 3 3 3
+.                    : 4
+FIRSTLINE            : 1
+INTEGER              : 3 4 4
+NAME                 : 3
+error                : 
+
+Nonterminals, with rules where they appear
+
+data                 : 2
+float                : 3 3
+start                : 0
+
+Parsing method: LALR
+
+state 0
+
+    (0) S' -> . start
+    (1) start -> . FIRSTLINE
+    (2) start -> . data
+    (3) data -> . NAME , float , float , INTEGER
+
+    FIRSTLINE       shift and go to state 1
+    NAME            shift and go to state 4
+
+    start                          shift and go to state 2
+    data                           shift and go to state 3
+
+state 1
+
+    (1) start -> FIRSTLINE .
+
+    $end            reduce using rule 1 (start -> FIRSTLINE .)
+
+
+state 2
+
+    (0) S' -> start .
+
+
+
+state 3
+
+    (2) start -> data .
+
+    $end            reduce using rule 2 (start -> data .)
+
+
+state 4
+
+    (3) data -> NAME . , float , float , INTEGER
+
+    ,               shift and go to state 5
+
+
+state 5
+
+    (3) data -> NAME , . float , float , INTEGER
+    (4) float -> . INTEGER . INTEGER
+
+    INTEGER         shift and go to state 6
+
+    float                          shift and go to state 7
+
+state 6
+
+    (4) float -> INTEGER . . INTEGER
+
+    .               shift and go to state 8
+
+
+state 7
+
+    (3) data -> NAME , float . , float , INTEGER
+
+    ,               shift and go to state 9
+
+
+state 8
+
+    (4) float -> INTEGER . . INTEGER
+
+    INTEGER         shift and go to state 10
+
+
+state 9
+
+    (3) data -> NAME , float , . float , INTEGER
+    (4) float -> . INTEGER . INTEGER
+
+    INTEGER         shift and go to state 6
+
+    float                          shift and go to state 11
+
+state 10
+
+    (4) float -> INTEGER . INTEGER .
+
+    ,               reduce using rule 4 (float -> INTEGER . INTEGER .)
+
+
+state 11
+
+    (3) data -> NAME , float , float . , INTEGER
+
+    ,               shift and go to state 12
+
+
+state 12
+
+    (3) data -> NAME , float , float , . INTEGER
+
+    INTEGER         shift and go to state 13
+
+
+state 13
+
+    (3) data -> NAME , float , float , INTEGER .
+
+    $end            reduce using rule 3 (data -> NAME , float , float , INTEGER .)
+
