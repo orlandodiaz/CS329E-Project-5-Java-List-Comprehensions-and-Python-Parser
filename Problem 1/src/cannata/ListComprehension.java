@@ -2,7 +2,7 @@ package cannata;
 
 import java.util.*;
 
-public class SmallListComprehension {
+public class ListComprehension {
     public static void main(String[] args) {
         ArrayList<List<Object>> emp = new ArrayList<>();
         List<Object> e1 = Arrays.asList(1, "MARTIN", "CARMEN", "MARTINCU", "3-MAR-90", "", "PRESIDENT", 4500, 0, 50, 0);
@@ -33,6 +33,22 @@ public class SmallListComprehension {
 
         emp.add(e1);emp.add(e2);emp.add(e3);emp.add(e4);emp.add(e5);emp.add(e6);emp.add(e7);emp.add(e8);emp.add(e9);emp.add(e10);emp.add(e11);emp.add(e12);
         emp.add(e13);emp.add(e14);emp.add(e15);emp.add(e16);emp.add(e17);emp.add(e18);emp.add(e19);emp.add(e20);emp.add(e21);emp.add(e22);emp.add(e23);emp.add(e24);emp.add(e25);
+
+        ArrayList<List<Object>> dept = new ArrayList<List<Object>>();
+        // ("ID", "NAME", "REGION_ID")
+        List<Object> d1 = Arrays.asList(10, "Finance", 1);
+        List<Object> d2 = Arrays.asList(31, "Sales", 1);
+        List<Object> d3 = Arrays.asList(32, "Sales", 2);
+        List<Object> d4 = Arrays.asList(33, "Sales", 3);
+        List<Object> d5 = Arrays.asList(34, "Sales", 4);
+        List<Object> d6 = Arrays.asList(35, "Sales", 5);
+        List<Object> d7 = Arrays.asList(41, "Operations", 1);
+        List<Object> d8 = Arrays.asList(42, "Operations", 2);
+        List<Object> d9 = Arrays.asList(43, "Operations", 3);
+        List<Object> d10 = Arrays.asList(44, "Operations", 4);
+        List<Object> d11 = Arrays.asList(45, "Operations", 5);
+        List<Object> d12 = Arrays.asList(50, "Administration", 1);
+        dept.add(d1); dept.add(d2); dept.add(d3); dept.add(d4); dept.add(d5); dept.add(d6); dept.add(d7); dept.add(d8); dept.add(d9); dept.add(d10); dept.add(d11); dept.add(d12);
 
         // 1. select * from emp;
         System.out.println("select * from emp;");
@@ -72,13 +88,17 @@ public class SmallListComprehension {
                 .map(e -> Arrays.asList(e.get(1), e.get(2), e.get(7)))
                 .forEach(e -> {System.out.println(e);});
 
-        // 6. Cross Join emp where salary > 4000 with emp
-        System.out.println("\nselect * from emp where salary > 4000 cross join emp");
+        // 6. select * from emp cross join dept
+        System.out.println("\nSELECT * FROM emp CROSS JOIN dept\n");
         emp.stream()
-                .filter(e -> (Integer)e.get(7) > 4000)
-                .flatMap(v1 -> emp.stream()
+                .flatMap(v1 -> dept.stream()
                 .map(v2 -> Arrays.asList(v1, v2)))
                 .forEach(e -> System.out.println(e));
+
+
+
+
+
 
     }
 }
