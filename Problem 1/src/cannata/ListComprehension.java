@@ -55,8 +55,15 @@ public class ListComprehension {
         emp.stream()
                 .forEach(e -> {System.out.println(e);});
 
+        // 2. select distinct title from emp where salary > 2000
+        System.out.println("\nselect distinct title from emp where salary > 2000: ");
+        emp.stream()
+                .filter(e -> (Integer)e.get(7) > 2000)
+                .map(e -> Arrays.asList(e.get(6)))
+                .distinct()
+                .forEach(e -> { System.out.println(e);});
 
-        // 2. select last_name, first_name, salary from emp where salary > 2000;
+        // 3. select last_name, first_name, salary from emp where salary > 2000;
         System.out.println("\nselect last_name, first_name, salary from emp where salary > 2000;");
         emp.stream()
                 .filter(e -> (Integer)e.get(7) > 2000)
@@ -64,7 +71,7 @@ public class ListComprehension {
                 .forEach(e -> {System.out.println(e);});
 
 
-        // 3. select last_name, first_name, salary from emp where salary > 2000 and dept_id > 30;
+        // 4. select last_name, first_name, salary from emp where salary > 2000 and dept_id > 30;
         System.out.println("\nselect last_name, first_name, salary from emp where salary > 2000 and dept_id > 30;");
         emp.stream()
                 .filter(e -> (Integer)e.get(7) > 2000 && (Integer)e.get(9) > 30)
@@ -72,7 +79,7 @@ public class ListComprehension {
                 .forEach(e -> {System.out.println(e);});
 
 
-        // 4. select last_name, first_name, salary from emp where salary > 2000 order by salary;
+        // 5. select last_name, first_name, salary from emp where salary > 2000 order by salary;
         System.out.println("\nselect last_name, first_name, salary from emp where salary > 2000 order by salary;");
         emp.stream()
                 .filter(e -> (Integer)e.get(7) > 2000)
@@ -80,7 +87,7 @@ public class ListComprehension {
                 .map(e -> Arrays.asList(e.get(1), e.get(2), e.get(7)))
                 .forEach(e -> {System.out.println(e);});
 
-        // 5. select last_name, first_name, salary from emp where salary > 2000 order by salary desc;
+        // 6. select last_name, first_name, salary from emp where salary > 2000 order by salary desc;
         System.out.println("\nselect last_name, first_name, salary from emp where salary > 2000 order by salary;");
         emp.stream()
                 .filter(e -> (Integer)e.get(7) > 2000)
@@ -88,17 +95,14 @@ public class ListComprehension {
                 .map(e -> Arrays.asList(e.get(1), e.get(2), e.get(7)))
                 .forEach(e -> {System.out.println(e);});
 
-        // 6. select * from emp cross join dept
+
+
+        // 7. select * from emp cross join dept
         System.out.println("\nSELECT * FROM emp CROSS JOIN dept\n");
         emp.stream()
                 .flatMap(v1 -> dept.stream()
                 .map(v2 -> Arrays.asList(v1, v2)))
                 .forEach(e -> System.out.println(e));
-
-
-
-
-
 
     }
 }
