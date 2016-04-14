@@ -61,7 +61,7 @@ public class ListComprehension {
                 .filter(e -> (Integer)e.get(7) > 2000)
                 .map(e -> Arrays.asList(e.get(6)))
                 .distinct()
-                .forEach(e -> { System.out.println(e);});
+                .forEach(e -> {System.out.println(e);});
 
         // 3. select last_name, first_name, salary from emp where salary > 2000;
         System.out.println("\nselect last_name, first_name, salary from emp where salary > 2000;");
@@ -88,7 +88,7 @@ public class ListComprehension {
                 .forEach(e -> {System.out.println(e);});
 
         // 6. select last_name, first_name, salary from emp where salary > 2000 order by salary desc;
-        System.out.println("\nselect last_name, first_name, salary from emp where salary > 2000 order by salary;");
+        System.out.println("\nselect last_name, first_name, salary from emp where salary > 2000 order by salary desc;");
         emp.stream()
                 .filter(e -> (Integer)e.get(7) > 2000)
                 .sorted((x, y) -> y.get(7).toString().compareTo(x.get(7).toString()))
