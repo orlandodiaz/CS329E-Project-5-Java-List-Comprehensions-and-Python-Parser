@@ -51,58 +51,45 @@ public class ListComprehension {
         dept.add(d1); dept.add(d2); dept.add(d3); dept.add(d4); dept.add(d5); dept.add(d6); dept.add(d7); dept.add(d8); dept.add(d9); dept.add(d10); dept.add(d11); dept.add(d12);
 
         // 1. select * from emp;
-        System.out.println("select * from emp;");
+        System.out.println("1. select * from emp;");
         emp.stream()
                 .forEach(e -> {System.out.println(e);});
 
         // 2. select distinct title from emp where salary > 2000
-        System.out.println("\nselect distinct title from emp where salary > 2000: ");
+        System.out.println("\n2. select distinct title from emp where salary > 2000; ");
         emp.stream()
                 .filter(e -> (Integer)e.get(7) > 2000)
                 .map(e -> Arrays.asList(e.get(6)))
                 .distinct()
                 .forEach(e -> {System.out.println(e);});
 
-        // 3. select last_name, first_name, salary from emp where salary > 2000;
-        System.out.println("\nselect last_name, first_name, salary from emp where salary > 2000;");
-        emp.stream()
-                .filter(e -> (Integer)e.get(7) > 2000)
-                .map(e -> Arrays.asList(e.get(1), e.get(2), e.get(7)))
-                .forEach(e -> {System.out.println(e);});
+        // 3.SELECT COUNT(DISTINCT dept_id) FROM EMP;
+        System.out.println("\n3. SELECT COUNT(DISTINCT dept_id) FROM EMP;");
+        Long l = emp.stream()
+                .mapToDouble(e -> Integer.parseInt(e.get(9).toString()))
+                .distinct()
+                .count();
+        System.out.println(l);
 
 
-        // 4. select last_name, first_name, salary from emp where salary > 2000 and dept_id > 30;
-        System.out.println("\nselect last_name, first_name, salary from emp where salary > 2000 and dept_id > 30;");
-        emp.stream()
-                .filter(e -> (Integer)e.get(7) > 2000 && (Integer)e.get(9) > 30)
-                .map(e -> Arrays.asList(e.get(1), e.get(2), e.get(7)))
-                .forEach(e -> {System.out.println(e);});
 
-
-        // 5. select last_name, first_name, salary from emp where salary > 2000 order by salary;
-        System.out.println("\nselect last_name, first_name, salary from emp where salary > 2000 order by salary;");
+        // 4. select last_name, first_name, salary from emp where salary > 2000 order by salary;
+        System.out.println("\n4. select last_name, first_name, salary from emp where salary > 2000 order by salary;");
         emp.stream()
                 .filter(e -> (Integer)e.get(7) > 2000)
                 .sorted((x, y) -> x.get(7).toString().compareTo(y.get(7).toString()))
                 .map(e -> Arrays.asList(e.get(1), e.get(2), e.get(7)))
                 .forEach(e -> {System.out.println(e);});
 
-        // 6. select last_name, first_name, salary from emp where salary > 2000 order by salary desc;
-        System.out.println("\nselect last_name, first_name, salary from emp where salary > 2000 order by salary desc;");
+        // 5. select last_name, first_name, salary from emp where salary > 2000 order by salary desc;
+        System.out.println("\nselect dept_id from emp where salary > 2000 order by salary desc;");
         emp.stream()
                 .filter(e -> (Integer)e.get(7) > 2000)
                 .sorted((x, y) -> y.get(7).toString().compareTo(x.get(7).toString()))
-                .map(e -> Arrays.asList(e.get(1), e.get(2), e.get(7)))
+                .mapToInt(e -> (Integer)(e.get(9)))
                 .forEach(e -> {System.out.println(e);});
 
 
-
-        // 7. select * from emp cross join dept
-        System.out.println("\nSELECT * FROM emp CROSS JOIN dept\n");
-        emp.stream()
-                .flatMap(v1 -> dept.stream()
-                .map(v2 -> Arrays.asList(v1, v2)))
-                .forEach(e -> System.out.println(e));
 
     }
 }
